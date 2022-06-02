@@ -1,0 +1,31 @@
+.Contents {
+  flex: 0.4;
+  border-right: 1px solid var(--twitter-colors);
+  min-width: fit-content;
+  overflow-y: scroll;
+}
+
+.Contents {
+  -ms-overflow-style: none;
+  /* for IE and Edge */
+  scrollbar-width: none;
+  /* for Firefox */
+}
+
+.Contents::-webkit-scrollbar {
+  display: none;
+}
+
+.Contents_header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid var(--twitter-colors);
+  padding: 15px 20px;
+}
+
+.Contents_header > h2 {
+  font-size: 20px;
+  font-weight: 800;
+}

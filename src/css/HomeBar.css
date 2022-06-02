@@ -1,0 +1,10 @@
+.HomeBar {
+  position: absolute;
+  width: 1920px;
+  height: 76px;
+  left: 0px;
+  top: 0px;
+
+  background: #ffffff;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
