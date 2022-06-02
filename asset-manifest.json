@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/piribu_mvp/static/css/main.ebb170c4.css",
+    "main.js": "/piribu_mvp/static/js/main.883f2d93.js",
+    "static/js/787.60ed6b36.chunk.js": "/piribu_mvp/static/js/787.60ed6b36.chunk.js",
+    "index.html": "/piribu_mvp/index.html",
+    "main.ebb170c4.css.map": "/piribu_mvp/static/css/main.ebb170c4.css.map",
+    "main.883f2d93.js.map": "/piribu_mvp/static/js/main.883f2d93.js.map",
+    "787.60ed6b36.chunk.js.map": "/piribu_mvp/static/js/787.60ed6b36.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ebb170c4.css",
+    "static/js/main.883f2d93.js"
+  ]
+}
