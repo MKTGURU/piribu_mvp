@@ -19,7 +19,6 @@ function Contents({ userObj }) {
   useEffect(() => {
     getFeeds();
   }, []);
-  console.log(feeds);
   return (
     <div className="Contents">
       <div className="Contents_header"></div>

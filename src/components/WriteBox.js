@@ -6,6 +6,7 @@ import { collection, addDoc } from "firebase/firestore";
 
 function WriteBox({ userObj }) {
   const [feedtext, setFeedText] = useState("");
+  const [attachment, setAttachment] = useState();
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -26,7 +27,24 @@ function WriteBox({ userObj }) {
     } = event;
     setFeedText(value);
   };
-
+  const onFileChange = (event) => {
+    const {
+      target: { files },
+    } = event;
+    const theFile = files[0];
+    const fileReader = new FileReader();
+    fileReader.onload = (finishedEvent) => {
+      console.log(finishedEvent);
+      const {
+        currentTarget: { result },
+      } = finishedEvent;
+      setAttachment(result);
+    };
+    fileReader.readAsDataURL(theFile);
+  };
+  const onClearClick = () => {
+    setAttachment(null);
+  };
   return (
     <div className="WriteBox">
       <form onSubmit={onSubmit}>
@@ -38,6 +56,13 @@ function WriteBox({ userObj }) {
             placeholder="What's happening?"
             type="text"
           />
+          <input accept="image/*" onChange={onFileChange} type="file" />
+          {attachment && (
+            <div>
+              <img src={attachment} width="100px" height="100px" />
+              <button onClick={onClearClick}>지울랭</button>
+            </div>
+          )}
         </div>
         <input type="submit" className="WriteBox_WriteButton" value="Booya!" />
       </form>
