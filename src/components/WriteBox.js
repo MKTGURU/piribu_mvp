@@ -1,25 +1,37 @@
 import React, { useState } from "react";
 import "../css/WriteBox.css";
 import { Avatar } from "@mui/material";
-import { dbService } from "../fbase";
-import { collection, addDoc } from "firebase/firestore";
+import { storageService, dbService, collection, addDoc } from "../fbase";
+import { v4 as uuidv4 } from "uuid";
+import { ref, uploadBytes } from "firebase/storage";
 
 function WriteBox({ userObj }) {
   const [feedtext, setFeedText] = useState("");
   const [attachment, setAttachment] = useState();
   const onSubmit = async (event) => {
+    const contentID = uuidv4();
     event.preventDefault();
     try {
       const docRef = await addDoc(collection(dbService, "feedtext"), {
         feedtext: feedtext,
         createdAt: Date.now(),
         userEmail: userObj.email,
+        contentId: contentID,
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
     setFeedText("");
+    uploadImage(contentID);
+    setAttachment(null);
+  };
+  const uploadImage = (contentID) => {
+    if (attachment == null) return;
+    const attachmentRef = ref(storageService, `images/${contentID}`);
+    uploadBytes(attachmentRef, uploadImage).then(() => {
+      console.log("Upload");
+    });
   };
   const onChange = (event) => {
     const {
